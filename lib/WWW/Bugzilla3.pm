@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# $Id: Bugzilla3.pm 22 2007-07-06 19:59:46Z swined $
+# $Id: Bugzilla3.pm 24 2007-07-09 10:21:45Z swined $
 
 package WWW::Bugzilla3;
 
@@ -14,7 +14,7 @@ use LWP::UserAgent;
 use HTTP::Cookies;
 use URI::Escape;
 
-our $VERSION = '0.4';
+our $VERSION = '0.5';
 
 
 =head1 NAME
@@ -23,7 +23,7 @@ WWW::Bugzilla3 - perl bindings for Bugzilla 3.0 api
 
 =head1 VERSION
 
-v0.4
+v0.5
 
 =head1 SYNOPSIS
 
@@ -338,7 +338,7 @@ sub named_search($$) {
 	return $self->search(cmdtype => 'runnamed', namedcmd => $cmd);
 }
 
-=head search(...)
+=head2 search(...)
 
 Execute search. Returns list of bugs.
 
