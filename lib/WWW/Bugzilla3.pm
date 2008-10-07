@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# $Id: Bugzilla3.pm 26 2007-09-01 09:57:28Z swined $
+# $Id: Bugzilla3.pm 28 2008-10-07 10:09:30Z swined $
 
 package WWW::Bugzilla3;
 
@@ -11,7 +11,7 @@ use Carp;
 use RPC::XML::Client;
 use URI::Escape;
 
-our $VERSION = '0.7';
+our $VERSION = '0.71';
 
 
 =head1 NAME
@@ -20,7 +20,7 @@ WWW::Bugzilla3 - perl bindings for Bugzilla 3.0 api
 
 =head1 VERSION
 
-v0.7
+v0.71
 
 =head1 SYNOPSIS
 
@@ -51,7 +51,7 @@ Creates new Bugzilla3 object.
 sub new($%) {
 	my ($class, %param) = @_;
 	croak "Cannot create $class without 'site'\n" unless $param{site};
-	$param{site} = "http://" . $param{site} unless $param{site} =~ /^http:\/\//;
+	$param{site} = 'http://' . $param{site} unless $param{site} =~ m|^https?://|i;
 	$param{site} .= "/" unless $param{site} =~ /\/$/;
 	$param{rpcurl} = $param{site} . 'xmlrpc.cgi';
 	$param{rpc} = RPC::XML::Client->new($param{rpcurl});
